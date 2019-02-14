@@ -17,17 +17,17 @@ then
     git clone -b $git_branch $git_url
 fi
 
-if [ ! -z  $nginx ]
+if [ ! -z $nginx ]
 then
 
-    wget $nginx_conf_url -o /nginx.conf
+    wget -O /nginx.conf $nginx_conf_url
     mv /nginx.conf /etc/nginx/nginx.conf
 fi
 
-if [ ! -z  $command ]
+if [ ! -z $command ]
 then
 
-    wget $custom_command_url -o /start.sh
+    wget -O /start.sh $custom_command_url
     chmod +x /start.sh
     /start.sh
 fi
