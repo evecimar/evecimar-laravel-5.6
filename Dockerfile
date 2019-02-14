@@ -31,7 +31,5 @@ COPY files/php/phpinfo.php /var/www/app/index.php
 COPY files/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY files/services.d /etc/services.d
 COPY files/docker-entrypoint.sh /docker-entrypoint.sh
-EXPOSE 80
 
-ENTRYPOINT ["/bin/s6-svscan", "/etc/services.d", "/docker-entrypoint.sh"]
-CMD []
+ENTRYPOINT ["/docker-entrypoint.sh"]
