@@ -1,18 +1,18 @@
 #Desenvolvido por Evecimar Silva - evecimar.com @evecimar
-FROM alpine:3.7
+FROM alpine:3.8
 
-ADD https://php.codecasts.rocks/php-alpine.rsa.pub /etc/apk/keys/php-alpine.rsa.pub
+ADD https://dl.bintray.com/php-alpine/key/php-alpine.rsa.pub /etc/apk/keys/php-alpine.rsa.pub
 
 RUN apk --update add ca-certificates
-RUN echo "@php https://php.codecasts.rocks/v3.7/php-7.2" >> /etc/apk/repositories
-RUN apk add --update php7@php
-RUN apk add --update php7-mbstring@php
+RUN echo "https://dl.bintray.com/php-alpine/v3.8/php-7.2" >> /etc/apk/repositories
+RUN apk add --update php
+RUN apk add --update php-mbstring
 
 RUN apk update && \
-    apk add nginx git bash ca-certificates s6 curl ssmtp libzip-dev libwebp-dev php7-phar@php php7-pear@php php7-curl@php \
-    php7-fpm@php php7-json@php php7-zlib@php php7-xml@php php7-dom@php php7-ctype@php php7-opcache@php php7-zip@php php7-iconv@php \
-    php7-pdo@php php7-pdo_mysql@php php7-pdo_sqlite@php php7-pdo_pgsql@php php7-mbstring@php php7-session@php php7-mysqli@php\
-    php7-openssl@php php7-sockets@php php7-posix@php php7-ldap@php php7-soap@php && \
+    apk add nginx git bash ca-certificates s6 curl ssmtp libzip-dev libwebp-dev php-phar php-pear php-curl \
+    php-fpm php-json php-zlib php-xml php-dom php-ctype php-opcache php-zip php-iconv \
+    php-pdo php-pdo_mysql php-pdo_sqlite php-pdo_pgsql php-mbstring php-session php-mysqli\
+    php-openssl php-sockets php-posix php-ldap php-soap && \
     rm -f /etc/php7/php-fpm.d/www.conf && \
     touch /etc/php7/php-fpm.d/env.conf && \
 	ln -s /etc/php7 /etc/php && \
@@ -21,7 +21,7 @@ RUN apk update && \
     ln -s /usr/lib/php7 /usr/lib/php && \
     rm -fr /var/cache/apk/*
 
-RUN curl -sS https://getcomposer.org/installer | php -- --filename=/usr/local/bin/composer
+RUN curl -sS https://getcomposer.org/installer | php7 -- --filename=/usr/local/bin/composer
 
 RUN rm -rf /var/www/* && mkdir /var/www/app
 
