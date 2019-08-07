@@ -110,21 +110,21 @@ No extato momento que escrevo este tutoral, eu estou trabalhando em um projeto l
 
 Meu git é: git@evecimar/projeto.git
 
-a pasta public do meu projeto esta dentro da pasta admin, então quando fizer o clone, meu projeto ficara na seguint estrutura no container:
+a pasta public do meu projeto esta dentro da pasta admin, então quando fizer o clone, meu projeto ficara na seguinte estrutura no container:
 
 /var/www/app/admin/
 
-minha pasta public fica dentro de admin e o nginx.conf esta apontando para /var/www/app/public, desta froma apresentando um erro ao tentar acesso o projeto.
+minha pasta public fica dentro de admin e o nginx.conf esta apontando para /var/www/app/public, desta forma é apresentando um erro ao tentar acesso o projeto.
 
 Eu posso resolver este problema de duas maneira:
 
 1 -
  Cria um arquivo nginx.conf com a variavel root contendo /var/www/app/admin/public, publico este arquivo em um local e passo a url do arquivo com env
 
-2 - Criam um arquivo de comendos que move a pasta para a pasta root padrão addim:
+2 - Crio um arquivo de comandos que move a pasta para a pasta root padrão addim:
 
 #!/bin/bash
 
 mv /var/www/app/admin/* /var/www/app/
 
-Salvo o arquivo e passo o url como env custom_command_url
+Salvo o arquivo na web e passo o url como env custom_command_url

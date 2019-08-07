@@ -1,0 +1,9 @@
+version: '3.1'
+
+services:
+  laravel-5.6:
+    build:
+      context: .
+    image: evecimar/laravel-5.6
+    environment:
+      git_url: 
