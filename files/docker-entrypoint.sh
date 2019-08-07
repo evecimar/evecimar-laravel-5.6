@@ -27,6 +27,14 @@ then
     then
         mv docker/nginx.conf /etc/nginx/nginx.conf
     fi
+    
+    file="docker/custom-command.sh"
+    if [ -f "$file" ]
+    then
+        
+        chmod +x docker/custom-command.sh
+        /docker/custom-command.sh
+    fi
 
 fi
 

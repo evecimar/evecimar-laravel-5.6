@@ -1,5 +1,6 @@
 #Desenvolvido por Evecimar Silva - evecimar.com @evecimar
 FROM alpine:3.8
+MAINTAINER Evecimar
 
 ADD https://dl.bintray.com/php-alpine/key/php-alpine.rsa.pub /etc/apk/keys/php-alpine.rsa.pub
 
