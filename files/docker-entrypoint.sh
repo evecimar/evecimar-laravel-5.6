@@ -10,7 +10,7 @@ cd /var/www/app/
 if [ ! -z $git ]
 then
     cd /var/www/app/
-
+    rm -R *
     if [ -z $git_branch ]
         then
         git_branch=master
@@ -38,17 +38,17 @@ then
 
 fi
 
-if [ ! -z  $nginx ]
+if [ ! -z $nginx ]
 then
-
-    wget $nginx_conf_url -o /nginx.conf
+    rm /nginx.conf
+    wget -O /nginx.conf $nginx_conf_url
     mv /nginx.conf /etc/nginx/nginx.conf
 fi
 
-if [ ! -z  $command ]
+if [ ! -z $command ]
 then
-
-    wget $custom_command_url -o /start.sh
+    rm /start.sh
+    wget -O /start.sh $custom_command_url
     chmod +x /start.sh
     /start.sh
 fi
