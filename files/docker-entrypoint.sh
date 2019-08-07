@@ -31,9 +31,9 @@ then
     file="docker/custom-command.sh"
     if [ -f "$file" ]
     then
-        
-        chmod +x docker/custom-command.sh
-        /docker/custom-command.sh
+        mv docker/custom-command.sh /custom-command.sh
+        chmod +x /custom-command.sh
+        /custom-command.sh
     fi
 
 fi
