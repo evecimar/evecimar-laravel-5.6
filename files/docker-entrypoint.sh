@@ -35,7 +35,11 @@ then
         chmod +x /custom-command.sh
         /custom-command.sh
     fi
-
+    file="composer.json"
+    if [ -f "$file" ]
+    then
+        composer install
+    fi
 fi
 
 if [ ! -z $nginx ]
